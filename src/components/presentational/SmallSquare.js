@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 const styles = {
     div: {
         display: 'inline-block',
@@ -11,7 +12,8 @@ const styles = {
     }
 }
 
-class SmallSquare extends Component {
+
+export default class SmallSquare extends Component {
     componentDidMount() {
         const { storeMetaInfo, id, date, description, company} = this.props
         storeMetaInfo({ 
@@ -32,5 +34,3 @@ class SmallSquare extends Component {
         )
     }
 }
-
-export default SmallSquare

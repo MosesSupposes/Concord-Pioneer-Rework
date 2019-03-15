@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import helpers from './helpers'
+import helpers from './lib/helpers'
 import SmallSquare from './components/stateful/SmallSquare';
 import harvesthouse from './assets/img/harvesthouse-312x146.png'
 const { determineAdCategory, formatAdType, objectFromEntries } = helpers
