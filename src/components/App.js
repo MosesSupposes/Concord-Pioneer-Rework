@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import helpers from './lib/helpers'
-import SmallSquare from './components/stateful/SmallSquare';
-import harvesthouse from './assets/img/harvesthouse-312x146.png'
+import helpers from '../lib/helpers'
+import SmallSquare from './SmallSquare';
+import harvesthouse from '../assets/img/harvesthouse-312x146.png'
 const { determineAdCategory, formatAdType, objectFromEntries } = helpers
 
 // TODO: Format date on each ad

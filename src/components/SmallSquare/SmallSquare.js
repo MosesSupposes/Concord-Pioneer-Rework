@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 const styles = {
     div: {
         display: 'inline-block',
