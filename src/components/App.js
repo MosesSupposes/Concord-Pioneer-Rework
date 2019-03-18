@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import helpers from '../lib/helpers'
+import * as helpers from '../lib/helpers'
 import SmallSquare from './SmallSquare';
 import harvesthouse from '../assets/img/harvesthouse-312x146.png'
 const { determineAdCategory, formatAdType, objectFromEntries } = helpers
 
 // TODO: Format date on each ad
+
+
 
 class App extends Component {
   constructor() {

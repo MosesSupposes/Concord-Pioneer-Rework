@@ -35,12 +35,82 @@ export function objectFromEntries(iterable) {
     return Object.assign({}, ...iterable.map( ([k, v]) => ({ [k]: v }) ))
 }
 
-const helpers = {
-    determineAdCategory,
-    formatAdType,
-    camelCase,
-    objectFromEntries
+export function getUniqueValuesReduce(arr) {   // this version is clearer than the filter alternative
+    return arr.reduce( (acc, cur) => !( acc.includes(cur) ) ? acc.concat(cur) : acc, [])
 }
 
 
-export default helpers
+export function mapObj(mapperFn,o) {
+	var newObj = {};
+	var keys = Object.keys(o);
+	for (let key of keys) {
+		newObj[key] = mapperFn( o[key] );
+	}
+	return newObj;
+}
+
+export function filterObj(predicateFn,o) {
+	const newObj = {}
+	Object.keys(o)
+	.filter(key => predicateFn(o[key]))
+	.forEach(key => newObj[key] = o[key])
+	return newObj
+}
+
+export function reduceObj(reducerFn,initialValue,o) {
+	return Object.values(o).reduce(reducerFn, initialValue)
+}
+
+export function constant(val) {
+    return function() {
+        return val
+    }
+}
+
+export function curry(fn,arity = fn.length) {
+	return (function nextCurried(prevArgs){
+		return function curried(nextArg){
+			var args = prevArgs.concat([nextArg]);
+			if (args.length >= arity) {
+				return fn(...args);
+			}
+			else {
+				return nextCurried(args);
+			}
+		};
+	})([]);
+}
+
+export function compose(...fns) {
+	return function composed(arg) {
+		return fns.reduceRight((result,fn) => fn(result),arg);
+	};
+}
+
+export function pipe(...fns) {
+	return compose(...fns.reverse());
+}
+
+export function binary(fn) {
+	return function two(arg1,arg2){
+		return fn(arg1,arg2);
+	};
+}
+
+export function reduce(arr, reducerFn, initialValue) {
+    var accumulator = initialValue === undefined ? undefined : initialValue
+    for (let i = 0; i < arr.length; i++) {
+        if (accumulator !== undefined) 
+            accumulator = reducerFn(accumulator, arr[i], i, arr)
+        else 
+            accumulator = arr[i]
+    }
+    return accumulator
+}
+
+export function reduceRight(arr, reducerFn, initialValue) {
+    return reduce(arr.reverse(), reducerFn, initialValue)
+}
+
+
+
