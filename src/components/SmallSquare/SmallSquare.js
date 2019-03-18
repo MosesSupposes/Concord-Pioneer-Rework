@@ -12,6 +12,7 @@ const styles = {
 }
 
 
+
 export default class SmallSquare extends Component {
     componentDidMount() {
         const { storeMetaInfo, id, date, description, company} = this.props
